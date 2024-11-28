@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'TravelRequestUIV2';
+  title = 'TravelRequest';
+
+  constructor(public router:Router){
+    
+  }
+
+  public goToHome(){
+    this.router.navigate(["/home"]);
+
+  }
 }
