@@ -8,12 +8,16 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { CommonService } from './Service/common.service';
 import { HttpClientModule } from '@angular/common/http';
+import { UserComponent } from './user/user.component';
+import { TravelRequestComponent } from './travel-request/travel-request.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    UserComponent,
+    TravelRequestComponent
   ],
   imports: [
     BrowserModule,
