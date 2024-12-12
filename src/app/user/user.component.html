@@ -1,3 +1,4 @@
+<app-header></app-header>
 <section class="h-100 bg-light">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -38,8 +39,8 @@
                   <div class="form-outline mb-4">
 
                     <label class="form-label" for="dept">Department</label>
-                    <select *ngFor="let item of departmentsData" name="dept" id="dept" class="form-control" formControlName="department" placeholder="Enter Your department">
-                      <option [value]="item.value">{{item.description}}</option>
+                    <select name="dept" id="dept" class="form-control" formControlName="department" placeholder="Enter Your department">
+                      <option  *ngFor="let item of departmentsData" [value]="item.value">{{item.description}}</option>
                     </select>
                     <!-- <input type="text" id="form3Example8" class="form-control form-control-lg"
                       formControlName="department" placeholder="Enter Your department" /> -->
@@ -47,8 +48,8 @@
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="role">Role</label>
-                    <select *ngFor="let item of roleData" name="role" id="role" class="form-control" formControlName="role" placeholder="Select Your role">
-                      <option [value]="item.value">{{item.description}}</option>
+                    <select  name="role" id="role" class="form-control" formControlName="role" placeholder="Select Your role">
+                      <option *ngFor="let item of roleData" [value]="item.value">{{item.description}}</option>
                     </select>
                   </div>
 
