@@ -1,0 +1,118 @@
+<section class="h-100 bg-light">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <div class="d-flex justify-content-end pt-3">
+                    <button type="button" (click)="AddTravelRequest()" class="btn btn-primary btn-lg">Create Travel
+                        Request</button>
+                    <button type="button" (click)="ShowAllTravelRequest()" class="btn btn-warning btn-lg ms-2">Show all
+                        Travel Request</button>
+                </div>
+                <div *ngIf="isShowAll" class="card card-registration my-4">
+                    <div class="row g-0">
+                        <div class="col-xl-6 d-none d-xl-block">
+                            <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                                alt="Sample photo" class="img-fluid"
+                                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="card-body p-md-5 text-black">
+                                <h3 class="mb-5 text-uppercase">Travel Request form</h3>
+
+                                <form [formGroup]="travelForm">
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="userid">User ID</label>
+                                        <select name="userid" id="userid"
+                                            formControlName="UserID" placeholder="Select user" class="form-control">
+                                            <option *ngFor="let item of userData"  [value]="item.userID">{{item.name}}</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-outline mb-4">
+                                            <div class="form-outline">
+                                                <label class="form-label" for="form3Example1m">Origin</label>
+                                                <input type="text" id="form3Example1m"
+                                                    class="form-control form-control-lg" formControlName="Origin"
+                                                    placeholder="Enter Your Origin" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-outline mb-4">
+                                            <div class="form-outline">
+                                                <label class="form-label" for="form3Example1m">Destination</label>
+                                                <input type="text" id="form3Example1m"
+                                                    class="form-control form-control-lg" formControlName="Destination"
+                                                    placeholder="Enter Your Destination" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row col-12">
+                                        <div class="form-outline mb-4 col-6">
+                                            <label for="startdate">Start Date  </label>
+                                            <input class="form-control" type="date" id="startdate" name="startdate" formControlName="StartDate">
+                                        </div>
+                                        <div class="form-outline mb-4 col-6">
+                                            <div class="form-outline mb-4">
+                                                <label for="enddate">End Date  </label>
+                                                <input class="form-control" type="date" id="enddate" name="enddate" formControlName="EndDate">
+                                            </div> 
+                                        </div>                                    
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-outline mb-4">
+                                            <div class="form-outline">
+                                                <label class="form-label" for="form3Example1m">Purpose</label>
+                                                <input type="text" id="form3Example1m"
+                                                    class="form-control form-control-lg" formControlName="Purpose"
+                                                    placeholder="Enter Your Purpose" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="d-flex justify-content-end pt-3">
+                                        <button type="button" (click)="Clear()" class="btn btn-light btn-lg">Reset
+                                            all</button>
+                                        <button type="button" (click)="onSubmit(travelForm)"
+                                            class="btn btn-warning btn-lg ms-2">Submit form</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="isCreateTravelRequest" class="my-5">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>UserID</th>
+                                <th>Origin</th>
+                                <th>Destination</th>
+                                <th>StartDate</th>
+                                <th>EndDate</th>
+                                <th>Purpose</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of travelRequestData">
+                                <td>{{user.userID}}</td>
+                                <td>{{user.origin}}</td>
+                                <td>{{user.destination}}</td>
+                                <td>{{user.startdate}}</td>
+                                <td>{{user.enddate}}</td>
+                                <td>{{user.purpose}}</td>
+                                <td>{{user.status}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
