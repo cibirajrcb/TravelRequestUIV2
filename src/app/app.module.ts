@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { TravelRequestComponent } from './travel-request/travel-request.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LogInComponent } from './log-in/log-in.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     HeaderComponent,
     UserComponent,
-    TravelRequestComponent
+    TravelRequestComponent,
+    LogInComponent
   ],
   imports: [
     BrowserModule,
