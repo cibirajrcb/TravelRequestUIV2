@@ -4,43 +4,84 @@
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col">
         <div class="d-flex justify-content-end pt-3">
-          <button type="button" (click)="AddNewUser()" class="btn btn-primary btn-lg">Add New User</button>
-          <button type="button" (click)="ShowAllUser()" class="btn btn-warning btn-lg ms-2">Show all User</button>
+          <button
+            type="button"
+            (click)="AddNewUser()"
+            class="btn btn-primary btn-lg"
+          >
+            Add New User
+          </button>
+          <button
+            type="button"
+            (click)="ShowAllUser()"
+            class="btn btn-warning btn-lg ms-2"
+          >
+            Show all User
+          </button>
         </div>
-        <div *ngIf="isShowAll" class="card card-registration my-4">
+        <div *ngIf="isCreateUser" class="card card-registration my-4">
           <div class="row g-0">
             <div class="col-xl-6 d-none d-xl-block">
-              <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/img4.webp"
-                alt="Sample photo" class="img-fluid"
-                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+              <img
+                src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                alt="Sample photo"
+                class="img-fluid"
+                style="
+                  border-top-left-radius: 0.25rem;
+                  border-bottom-left-radius: 0.25rem;
+                "
+              />
             </div>
             <div class="col-xl-6">
               <div class="card-body p-md-5 text-black">
                 <h3 class="mb-5 text-uppercase">User registration form</h3>
 
                 <form [formGroup]="userForm">
-
                   <div class="row">
                     <div class="form-outline mb-4">
                       <div class="form-outline">
-                        <label class="form-label" for="form3Example1m">Name</label>
-                        <input type="text" id="form3Example1m" class="form-control form-control-lg"
-                          formControlName="name" placeholder="Enter Your name" />
+                        <label class="form-label" for="form3Example1m"
+                          >Name</label
+                        >
+                        <input
+                          type="text"
+                          id="form3Example1m"
+                          class="form-control form-control-lg"
+                          formControlName="name"
+                          placeholder="Enter Your name"
+                        />
                       </div>
                     </div>
                   </div>
 
                   <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example97">Email ID</label>
-                    <input type="text" id="form3Example97" class="form-control form-control-lg" formControlName="email"
-                      placeholder="Enter Your email" />
+                    <label class="form-label" for="form3Example97"
+                      >Email ID</label
+                    >
+                    <input
+                      type="text"
+                      id="form3Example97"
+                      class="form-control form-control-lg"
+                      formControlName="email"
+                      placeholder="Enter Your email"
+                    />
                   </div>
 
                   <div class="form-outline mb-4">
-
                     <label class="form-label" for="dept">Department</label>
-                    <select name="dept" id="dept" class="form-control" formControlName="department" placeholder="Enter Your department">
-                      <option  *ngFor="let item of departmentsData" [value]="item.value">{{item.description}}</option>
+                    <select
+                      name="dept"
+                      id="dept"
+                      class="form-control"
+                      formControlName="department"
+                      placeholder="Enter Your department"
+                    >
+                      <option
+                        *ngFor="let item of departmentsData"
+                        [value]="item.value"
+                      >
+                        {{ item.description }}
+                      </option>
                     </select>
                     <!-- <input type="text" id="form3Example8" class="form-control form-control-lg"
                       formControlName="department" placeholder="Enter Your department" /> -->
@@ -48,23 +89,45 @@
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="role">Role</label>
-                    <select  name="role" id="role" class="form-control" formControlName="role" placeholder="Select Your role">
-                      <option *ngFor="let item of roleData" [value]="item.value">{{item.description}}</option>
+                    <select
+                      name="role"
+                      id="role"
+                      class="form-control"
+                      formControlName="role"
+                      placeholder="Select Your role"
+                    >
+                      <option
+                        *ngFor="let item of roleData"
+                        [value]="item.value"
+                      >
+                        {{ item.description }}
+                      </option>
                     </select>
                   </div>
 
                   <div class="d-flex justify-content-end pt-3">
-                    <button type="button" (click)="Clear()" class="btn btn-light btn-lg">Reset all</button>
-                    <button type="button" (click)="onSubmit(userForm)" class="btn btn-warning btn-lg ms-2">Submit form</button>
+                    <button
+                      type="button"
+                      (click)="Clear()"
+                      class="btn btn-light btn-lg"
+                    >
+                      Reset all
+                    </button>
+                    <button
+                      type="button"
+                      (click)="onSubmit(userForm)"
+                      class="btn btn-warning btn-lg ms-2"
+                    >
+                      Submit form
+                    </button>
                   </div>
-
                 </form>
               </div>
             </div>
           </div>
         </div>
 
-        <div *ngIf="isCreateUser" class="my-5">
+        <div *ngIf="isShowAll" class="my-5">
           <table class="table table-hover">
             <thead>
               <tr>
@@ -79,17 +142,16 @@
             </thead>
             <tbody>
               <tr *ngFor="let user of userData">
-                <td>{{user.userID}}</td>
-                <td>{{user.name}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.departmentID}}</td>
-                <td>{{user.roleID}}</td>
-                <td>{{user.createdDate}}</td>
-                <td>{{user.createdBy}}</td>
+                <td>{{ user.userID }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.departmentID }}</td>
+                <td>{{ user.roleID }}</td>
+                <td>{{ user.createdDate }}</td>
+                <td>{{ user.createdBy }}</td>
               </tr>
             </tbody>
           </table>
-
         </div>
       </div>
     </div>
