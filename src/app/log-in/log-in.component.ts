@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CommonService } from '../Service/common.service';
 
 @Component({
   selector: 'app-log-in',
@@ -13,7 +14,7 @@ export class LogInComponent implements OnInit{
 
   loginForm! : FormGroup;
 
-  constructor(private fb: FormBuilder, private router:Router){
+  constructor(private fb: FormBuilder, private router:Router, private commonService:CommonService){
 
   }
 
@@ -24,6 +25,7 @@ export class LogInComponent implements OnInit{
       password : ['',Validators.required]
 
     })
+    sessionStorage.removeItem("isApprover");
     
   }
 
@@ -33,8 +35,13 @@ export class LogInComponent implements OnInit{
   logIn(loginForm:FormGroup){
     if(loginForm.valid){
       if(loginForm.value.userName === 'admin' && loginForm.value.password == 12345 ){
+        this.commonService.isApprover = true;
         this.router.navigate(['/home']);
       }  
+      else if(loginForm.value.userName === 'user' && loginForm.value.password == 12345 ){
+        this.commonService.isApprover = false;
+        this.router.navigate(['/home']);
+      } 
       else{
         alert('User Not Found');
       } 
