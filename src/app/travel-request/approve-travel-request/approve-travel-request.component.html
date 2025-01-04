@@ -1,0 +1,34 @@
+<app-header></app-header>
+<div *ngIf="commonService.isApprover" class="my-5">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>UserID</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>StartDate</th>
+                <th>EndDate</th>
+                <th>Purpose</th>
+                <th>Status</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let req of travelRequestData">
+                <td>{{ req.userID }}</td>
+                <td>{{ req.origin }}</td>
+                <td>{{ req.destination }}</td>
+                <td>{{ req.startDate }}</td>
+                <td>{{ req.endDate }}</td>
+                <td>{{ req.purpose }}</td>
+                <td>{{ req.status }}</td>
+                <td>
+                    <button class="btn btn-success" (click)="Approve(req)">Approve</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="Reject(req)">Reject</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

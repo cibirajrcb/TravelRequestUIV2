@@ -6,13 +6,26 @@ import { Injectable } from '@angular/core';
 })
 export class CommonService {
 
-  BaseUrl = "https://localhost:7117/api/"
+  BaseUrl = "https://localhost:7117/api/";
 
   constructor(public http:HttpClient) { }
+  isApproverRole = false;
+
+  get isApprover(){
+    let val = sessionStorage.getItem("isApprover");
+    this.isApproverRole = JSON.parse(val || "false");
+    return this.isApproverRole;
+  }
+  set isApprover(value){
+    this.isApproverRole = value;
+    sessionStorage.setItem("isApprover",value?.toString()|| "");
+
+  }
 
   getDetails(){
     this.http.get("");
   }
+
 
   saveUser(request: any) {
     return this.http.post(this.BaseUrl + "User/SaveUser", request);
@@ -30,6 +43,10 @@ export class CommonService {
     return this.http.get(this.BaseUrl + "TravelRequest/GetAllTravelRequest");
   }
 
+  sendEmailNotification(request:any) {
+    return this.http.post(this.BaseUrl + "TravelRequest/SendEmail", request);
+  }
+
 }
 
 
@@ -39,6 +56,13 @@ export interface userModel{
   DepartmentID: number;
   RoleID: number;
 
+}
+
+export interface EmailRequest {
+  Subject: string,
+  Body: string,
+  Attachments: any,
+  ToEmail: string
 }
 
 export const Departments = [
