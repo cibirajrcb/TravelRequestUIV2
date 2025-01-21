@@ -47,6 +47,10 @@ export class CommonService {
     return this.http.post(this.BaseUrl + "TravelRequest/SendEmail", request);
   }
 
+  approveORRejectTravelRequest(request:any){
+    return this.http.post(this.BaseUrl + "TravelRequest/ApproveOrRejectTravelRequest", request);
+  }
+
 }
 
 

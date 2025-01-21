@@ -33,23 +33,47 @@ export class ApproveTravelRequestComponent implements OnInit {
 
   Approve(data:any){
     let req = this.getEmailRequest(data,"Approved");
-    this.commonService.sendEmailNotification(req).subscribe((res:any)=>{
-      if(res?.data){
-        alert("Request Approved Successfully");
+    let approveReq ={
+      userId : data.userID,
+      isApproved : true,
+      requestID : data.requestID
 
+    }
+    this.commonService.approveORRejectTravelRequest(approveReq).subscribe((res:any)=>{
+      if(res?.data){
+        this.commonService.sendEmailNotification(req).subscribe((res:any)=>{
+          if(res?.data){
+            alert("Request Approved Successfully");
+            this.GetAllTravelRequest();
+    
+          }
+        })
       }
+
     })
+    
 
   }
 
   Reject(data:any){
     console.log("input data", data);
     let req = this.getEmailRequest(data,"Rejected");
-    this.commonService.sendEmailNotification(req).subscribe((res:any)=>{
+    let approveReq ={
+      userId : data.userID,
+      isApproved : false,
+      requestID : data.requestID
+
+    }
+    this.commonService.approveORRejectTravelRequest(approveReq).subscribe((res:any)=>{
       if(res?.data){
-        alert("Request Rejected Successfully");
+        this.commonService.sendEmailNotification(req).subscribe((res:any)=>{
+          if(res?.data){
+            alert("Request Rejected Successfully");
+            this.GetAllTravelRequest();
+          }
+        })
       }
-    })
+    })   
    
   }
 
@@ -82,7 +106,7 @@ export class ApproveTravelRequestComponent implements OnInit {
         Body : bodyhtml,
         Subject : `${status.toUpperCase()} Travel Request Notification`,
         Attachments : null,
-        ToEmail : "vickyvin955@gmail.com"
+        ToEmail : data.email//"vickyvin955@gmail.com"
       }     
       return request;
   }
