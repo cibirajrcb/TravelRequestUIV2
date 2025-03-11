@@ -28,9 +28,12 @@
                     <button class="btn btn-success" (click)="Approve(req)">Approve</button>
                 </td>
                 <td>
-                    <button class="btn btn-danger" (click)="Reject(req)">Reject</button>
+                    <button class="btn btn-danger" (click)="showPopup(req)">Reject</button>
                 </td>
             </tr>
         </tbody>
     </table>
+    <div *ngIf="showRejectPopup">
+        <app-model-pop-up [showPopup]="showRejectPopup" (ReviewComments) = "Reject()"></app-model-pop-up>
+    </div>
 </div>

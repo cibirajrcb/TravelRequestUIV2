@@ -10,9 +10,10 @@ import { CommonService } from './Service/common.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { TravelRequestComponent } from './travel-request/travel-request.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LogInComponent } from './log-in/log-in.component';
 import { ApproveTravelRequestComponent } from './travel-request/approve-travel-request/approve-travel-request.component';
+import { ModelPopUpComponent } from './model-pop-up/model-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +23,16 @@ import { ApproveTravelRequestComponent } from './travel-request/approve-travel-r
     UserComponent,
     TravelRequestComponent,
     LogInComponent,
-    ApproveTravelRequestComponent
+    ApproveTravelRequestComponent,
+    ModelPopUpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [CommonService],
   bootstrap: [AppComponent]

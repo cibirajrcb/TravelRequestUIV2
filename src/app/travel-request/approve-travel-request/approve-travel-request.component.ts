@@ -15,6 +15,10 @@ export class ApproveTravelRequestComponent implements OnInit {
 
 
   travelRequestData : any =[];
+  RejectComments : string = "";
+  displayStyle = "none"; 
+  showRejectPopup = false;
+  travelRequestID : any = 0;
 
   ngOnInit(): void {
     this.GetAllTravelRequest();
@@ -55,8 +59,14 @@ export class ApproveTravelRequestComponent implements OnInit {
 
   }
 
-  Reject(data:any){
-    console.log("input data", data);
+  showPopup(data:any){
+    this.showRejectPopup = true;
+    this.travelRequestID = data?.requestID
+  }
+
+  Reject(){
+    console.log("this.travelRequestID", this.travelRequestID);
+    let data = this.travelRequestData.filter((x:any) => x.requestID == this.travelRequestID);
     let req = this.getEmailRequest(data,"Rejected");
     let approveReq ={
       userId : data.userID,
@@ -76,6 +86,8 @@ export class ApproveTravelRequestComponent implements OnInit {
     })   
    
   }
+
+
 
   getEmailRequest(data:any, status:string){
     
