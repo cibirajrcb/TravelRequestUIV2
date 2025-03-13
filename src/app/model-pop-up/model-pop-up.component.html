@@ -1,0 +1,26 @@
+<div *ngIf="showPopup" class="modal" tabindex="-1" role="dialog"> >
+    <div class="modal-dialog" role="document"> 
+        <div class="modal-content"> 
+          <div class="modal-header"> 
+            <h4 class="modal-title">Reject Comments</h4> 
+          </div> 
+          <div class="modal-body"> 
+            <textarea [(ngModel)]="RejectComments" placeholder="Enter your message">
+
+            </textarea>
+      
+          </div> 
+          <div class="modal-footer"> 
+            <button type="button" class="btn btn-danger" 
+                    (click)="closePopup()"> 
+              Close 
+            </button> 
+            <button type="button" class="btn btn-danger" 
+                    (click)="submitPopup()"> 
+              Submit 
+            </button> 
+          </div> 
+        </div> 
+      </div>      
+
+</div>
