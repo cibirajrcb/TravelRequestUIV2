@@ -51,6 +51,22 @@ export class CommonService {
     return this.http.post(this.BaseUrl + "TravelRequest/ApproveOrRejectTravelRequest", request);
   }
 
+  getAllPayments() {
+    return this.http.get(this.BaseUrl + "TravelRequest/GetAllPayments");
+  }
+
+  savePaymentRequest(request: any) {
+    return this.http.post(this.BaseUrl + "TravelRequest/SavePayment", request);
+  }
+
+  getAllExpenses() {
+    return this.http.get(this.BaseUrl + "TravelRequest/GetAllExpenses");
+  }
+
+  saveExpensesRequest(request: any) {
+    return this.http.post(this.BaseUrl + "TravelRequest/SaveExpenses", request);
+  }
+
 }
 
 
@@ -85,3 +101,19 @@ export const Roles = [
   {value:4,description:'Delivery Head'}
 
 ]
+
+export const PaymentStatus = [
+  {value:1,description:'Paid'},
+  {value:2,description:'Not Paid'},
+  {value:3,description:'Rejected'}
+]
+
+export const ExpenseType = [
+  {value:1,description:'Meals'},
+  {value:2,description:'Air Fare'},
+  {value:3,description:'Travel fare'},
+  {value:4,description:'Accommodation fee'},
+  {value:5,description:'Others'}
+]
+
+
