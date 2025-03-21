@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LogInComponent } from './log-in/log-in.component';
 import { ApproveTravelRequestComponent } from './travel-request/approve-travel-request/approve-travel-request.component';
 import { ModelPopUpComponent } from './model-pop-up/model-pop-up.component';
+import { ExpensesComponent } from './expenses/expenses.component';
+import { PaymentsComponent } from './payments/payments.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ModelPopUpComponent } from './model-pop-up/model-pop-up.component';
     TravelRequestComponent,
     LogInComponent,
     ApproveTravelRequestComponent,
-    ModelPopUpComponent
+    ModelPopUpComponent,
+    ExpensesComponent,
+    PaymentsComponent
   ],
   imports: [
     BrowserModule,
