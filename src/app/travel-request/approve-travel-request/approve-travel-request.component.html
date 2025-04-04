@@ -28,12 +28,33 @@
                     <button class="btn btn-success" (click)="Approve(req)">Approve</button>
                 </td>
                 <td>
-                    <button class="btn btn-danger" (click)="showPopup(req)">Reject</button>
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Reject</button>
                 </td>
             </tr>
         </tbody>
     </table>
-    <div *ngIf="showRejectPopup">
-        <app-model-pop-up [showPopup]="showRejectPopup" (ReviewComments) = "Reject()"></app-model-pop-up>
-    </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #exampleModal>
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Reject Reason</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                        <textarea [(ngModel)]="RejectComments" placeholder="Enter your message">
+            
+                        </textarea>
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+                  <button type="button" class="btn btn-primary" (click)="Reject()">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
 </div>

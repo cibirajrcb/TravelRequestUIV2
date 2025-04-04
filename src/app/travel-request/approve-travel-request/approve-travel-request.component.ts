@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { CommonService, EmailRequest } from '../../Service/common.service';
 
 @Component({
@@ -19,6 +19,8 @@ export class ApproveTravelRequestComponent implements OnInit {
   displayStyle = "none"; 
   showRejectPopup = false;
   travelRequestID : any = 0;
+  
+
 
   ngOnInit(): void {
     this.GetAllTravelRequest();
@@ -40,7 +42,8 @@ export class ApproveTravelRequestComponent implements OnInit {
     let approveReq ={
       userId : data.userID,
       isApproved : true,
-      requestID : data.requestID
+      requestID : data.requestID,
+      comments : ''
 
     }
     this.commonService.approveORRejectTravelRequest(approveReq).subscribe((res:any)=>{
@@ -66,12 +69,14 @@ export class ApproveTravelRequestComponent implements OnInit {
 
   Reject(){
     console.log("this.travelRequestID", this.travelRequestID);
+    console.log("this.RejectReason", this.RejectComments);
     let data = this.travelRequestData.filter((x:any) => x.requestID == this.travelRequestID);
     let req = this.getEmailRequest(data,"Rejected");
     let approveReq ={
       userId : data.userID,
       isApproved : false,
-      requestID : data.requestID
+      requestID : data.requestID,
+      comments : this.RejectComments
 
     }
     this.commonService.approveORRejectTravelRequest(approveReq).subscribe((res:any)=>{
