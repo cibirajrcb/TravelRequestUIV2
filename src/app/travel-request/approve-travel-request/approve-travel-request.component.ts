@@ -38,7 +38,7 @@ export class ApproveTravelRequestComponent implements OnInit {
   }
 
   Approve(data:any){
-    let req = this.getEmailRequest(data,"Approved");
+    let req = this.getEmailRequest(data,"Approved",false);
     let approveReq ={
       userId : data.userID,
       isApproved : true,
@@ -71,11 +71,11 @@ export class ApproveTravelRequestComponent implements OnInit {
     console.log("this.travelRequestID", this.travelRequestID);
     console.log("this.RejectReason", this.RejectComments);
     let data = this.travelRequestData.filter((x:any) => x.requestID == this.travelRequestID);
-    let req = this.getEmailRequest(data,"Rejected");
+    let req = this.getEmailRequest(data,"Rejected",true);
     let approveReq ={
-      userId : data.userID,
+      userId : data[0]?.userID,
       isApproved : false,
-      requestID : data.requestID,
+      requestID : data[0]?.requestID,
       comments : this.RejectComments
 
     }
@@ -83,6 +83,7 @@ export class ApproveTravelRequestComponent implements OnInit {
       if(res?.data){
         this.commonService.sendEmailNotification(req).subscribe((res:any)=>{
           if(res?.data){
+            document.getElementById("ModalClose")?.click();
             alert("Request Rejected Successfully");
             this.GetAllTravelRequest();
           }
@@ -94,7 +95,7 @@ export class ApproveTravelRequestComponent implements OnInit {
 
 
 
-  getEmailRequest(data:any, status:string){
+  getEmailRequest(data:any, status:string, isReqFromReject: boolean){
     
       let bodyhtml = `<style>
       table {
@@ -123,7 +124,7 @@ export class ApproveTravelRequestComponent implements OnInit {
         Body : bodyhtml,
         Subject : `${status.toUpperCase()} Travel Request Notification`,
         Attachments : null,
-        ToEmail : data.email//"vickyvin955@gmail.com"
+        ToEmail : isReqFromReject ? data[0]?.email : data?.email//"vickyvin955@gmail.com"
       }     
       return request;
   }
